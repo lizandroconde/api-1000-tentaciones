@@ -29,12 +29,13 @@ module.exports = {
             }
         },
         CategoriaId: async (_, { IdCategoria }) => {
-            let data = await Categoria.findOne({_id:IdCategoria}).populate('menus');
+            let data = await Categoria.findById(IdCategoria).populate('menus');
             return data
             
        },
-        MenuId: async (_, { IdNenu }) => {
-            let data = await Menu.findOne({_id:IdNenu}).populate('platos');
+        MenuId: async (_, { IdMenu }) => {
+            let data = await Menu.findById(IdMenu).populate('platos');
+            console.log(data)
             return data
             
        },

@@ -13,5 +13,7 @@ mongoConnect().then(success => {
 
 const server = new ApolloServer({ schema: schema });
 
-server.listen(port).then(() => console.log(`🚀 Server ready at ${port}`));
-
+server.listen(port).then(({ url, subscriptionsUrl }) => {
+    console.log(`🚀 Server ready at ${url}`);
+    console.log(`🚀 Subscriptions ready at ${subscriptionsUrl}`);
+  });

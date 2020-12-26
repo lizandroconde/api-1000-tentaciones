@@ -30,7 +30,7 @@ module.exports = {
                 return 0;
             }
         },
-        createMenu: async (_, { input }) => {
+        createPlato: async (_, { input }) => {
             const newPlato = new Plato(input);
             const data = await newPlato.save();
             if (data) {
@@ -48,8 +48,8 @@ module.exports = {
                 return 0;
             }
         },
-        AsigPlato:  async (_, { IdMenu,input }) => {
-            const data =   await Menu.findByIdAndUpdate(IdMenu,{$push:{platos:input}});
+        AsigPlato:  async (_, { IdMenu,IdPlato }) => {
+            const data =   await Menu.findByIdAndUpdate(IdMenu,{$push:{platos:IdPlato}});
       
               if (data) {
                   return 1;

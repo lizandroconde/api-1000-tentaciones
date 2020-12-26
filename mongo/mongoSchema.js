@@ -1,4 +1,6 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require('mongoose') 
+const mongoose = require("mongoose")
+require('mongoose-double')(mongoose)
 
 
 // Esquema Categoria
@@ -18,21 +20,26 @@ const Plato = new Schema({
     tipos:[
         {
             nombre: String,
-            precio: Number,
-            status: Boolean
+            precio: Schema.Types.Double,
+            status: Boolean,
+            cod: String
         }
     ],
     tipo:{
         type:String,
         default:"checkbox"
     },
-    status: Boolean
+    status: Boolean,
+    necesario: Boolean
+
 })
 
 // Esquema Plato
 const Menu = new Schema({
     nombre: String,
-    precio: Schema.Types.Decimal128,
+    precio: {
+        type: Schema.Types.Double
+    },
     tiempo: String,
     descripcion: String,
     imagen: String,
@@ -47,8 +54,28 @@ const Menu = new Schema({
 })
 
 
+// Reservas 
+
+const Reserva = new Schema({
+    nombre: String,
+    direccion: String,
+    contacto: String,
+    menus:[{
+        IdMenu:{
+            type: Schema.Types.ObjectId,
+            ref: "Plato"
+        },
+        precio: {
+            type: Schema.Types.Double
+        },
+        cantidad:Number
+    }],
+    metodo: String
+})
+
 
 //export models
 module.exports.Categoria = model('Categoria', Categoria)
 module.exports.Menu = model('Menu', Menu)
 module.exports.Plato = model('Plato', Plato)
+module.exports.Reserva = model('Reserva', Reserva)

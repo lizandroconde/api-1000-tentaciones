@@ -5,7 +5,7 @@ type Query {
     Menus: [Menu],
     Platos: [Plato],
     CategoriaId(IdCategoria:String): Categoria,
-    MenuId(IdMenu:String): Categoria,
+    MenuId(IdMenu:String): Menu,
   }
   
 

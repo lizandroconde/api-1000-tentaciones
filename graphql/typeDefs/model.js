@@ -25,16 +25,35 @@ type Menu {
 type Tipo {
   nombre: String,
   precio: Float,
-  status: Boolean
+  status: Boolean,
+  cod: String
 }
 
 type Plato{
   _id:ID,
   nombre: String,
+  necesario: Boolean,
   tipos:[Tipo],
   tipo:String,
   status: Boolean
 }
+
+type Menus{
+  IdMenu: ID,
+  precio: Boolean,
+  cantidad: Int
+}
+
+type Reserva{
+  _id:ID,
+  nombre: String,
+  direccion: String,
+  contacto:String,
+  menus:[Menus],
+  metodo: String
+}
+
+
 `
 
 

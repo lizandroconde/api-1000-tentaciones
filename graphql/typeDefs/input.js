@@ -23,13 +23,22 @@ input MenuInput {
 input TipoInput {
   nombre: String,
   precio: Float,
-  status: Boolean
+  status: Boolean,
+  cod:String
 }
 
 input PlatoInput{
   nombre: String,
+  necesario: Boolean,
   tipo:String,
   status: Boolean
+}
+
+input ReservaInput{
+  nombre: String,
+  direccion: String,
+  contacto: String,
+  metod: String
 }
 `
 
