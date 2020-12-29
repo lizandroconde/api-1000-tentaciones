@@ -1,6 +1,6 @@
 const channel = require('../../utils/pubsub')
 
-const { Categoria,Menu, Plato } = require('../../mongo/mongoSchema')
+const { Categoria,Menu, Plato, Reserva } = require('../../mongo/mongoSchema')
 
 module.exports = {
     Mutation: {
@@ -33,6 +33,15 @@ module.exports = {
         createPlato: async (_, { input }) => {
             const newPlato = new Plato(input);
             const data = await newPlato.save();
+            if (data) {
+                return 1;
+            } else {
+                return 0;
+            }
+        },
+        createReserva: async (_, { input}) => {
+            const newReserva = new Reserva(input);
+            const data = await newReserva.save();
             if (data) {
                 return 1;
             } else {

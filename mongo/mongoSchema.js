@@ -60,14 +60,35 @@ const Reserva = new Schema({
     nombre: String,
     direccion: String,
     contacto: String,
+    fecha:{
+        type: Schema.Types.Date,
+        default:Date.now
+    },
+    hora: {
+        type: String
+    },
     menus:[{
-        IdMenu:{
+        menu:{
             type: Schema.Types.ObjectId,
-            ref: "Plato"
+            ref: "Menu"
         },
         precio: {
             type: Schema.Types.Double
         },
+      
+        platos:[
+            {
+              nombre:String,
+              tipos:[
+                  {
+                    nombre: String,
+                    precio: Schema.Types.Double,
+                    cod: String
+                     
+                  }
+              ]
+            }
+        ],
         cantidad:Number
     }],
     metodo: String

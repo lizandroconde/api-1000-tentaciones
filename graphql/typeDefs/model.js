@@ -23,6 +23,7 @@ type Menu {
 }
 
 type Tipo {
+  _id:ID,
   nombre: String,
   precio: Float,
   status: Boolean,
@@ -38,17 +39,35 @@ type Plato{
   status: Boolean
 }
 
-type Menus{
-  IdMenu: ID,
-  precio: Boolean,
-  cantidad: Int
+
+type Tipos{
+  _id:ID,
+  nombre: String,
+  precio: Float,
+  cod: String
 }
+
+type Platos{
+  nombre: String,
+  tipos:[Tipos]
+}
+
+
+type Menus{
+  menu: Menu,
+  precio: Float,
+  cantidad: Int,
+  platos: [Platos]
+}
+
 
 type Reserva{
   _id:ID,
   nombre: String,
   direccion: String,
   contacto:String,
+  hora: String,
+  fecha: String,
   menus:[Menus],
   metodo: String
 }

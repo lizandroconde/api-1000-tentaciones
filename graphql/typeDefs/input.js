@@ -27,6 +27,9 @@ input TipoInput {
   cod:String
 }
 
+
+
+
 input PlatoInput{
   nombre: String,
   necesario: Boolean,
@@ -34,11 +37,30 @@ input PlatoInput{
   status: Boolean
 }
 
+input TiposRInput{
+  nombre: String,
+  precio: Float,
+  cod:String
+}
+
+input PlatosRInput{
+  nombre: String,
+  tipos:[TiposRInput]
+}
+
+input MenuRInput{
+  menu: ID,
+  platos: [PlatosRInput],
+  precio: Float,
+  cantidad: Int
+}
+
 input ReservaInput{
   nombre: String,
   direccion: String,
   contacto: String,
-  metod: String
+  metodo: String,
+  menus:[MenuRInput]
 }
 `
 

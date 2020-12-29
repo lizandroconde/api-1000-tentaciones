@@ -1,4 +1,4 @@
-const { Categoria, Menu, Plato } = require('../../mongo/mongoSchema')
+const { Categoria, Menu, Plato, Reserva } = require('../../mongo/mongoSchema')
 module.exports = {
     Query: {
 
@@ -26,6 +26,14 @@ module.exports = {
                 return []
             } else {
                 return data
+            }   
+        },
+        Reservas:async () => {
+            const data = await Reserva.find().populate('menus.menu');
+            if (!data.length) {
+                return []
+            } else {
+                return data
             }
         },
         CategoriaId: async (_, { IdCategoria }) => {
@@ -35,7 +43,7 @@ module.exports = {
        },
         MenuId: async (_, { IdMenu }) => {
             let data = await Menu.findById(IdMenu).populate('platos');
-            console.log(data)
+           
             return data
             
        },
