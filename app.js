@@ -11,7 +11,9 @@ mongoConnect().then(success => {
 
 
 
-const server = new ApolloServer({ schema: schema });
+const server = new ApolloServer({cors: {
+    origin: '*',			// <- allow request from all domains
+    credentials: true}, schema: schema });
 
 server.listen(port).then(({ url, subscriptionsUrl }) => {
     console.log(`🚀 Server ready at ${url}`);
